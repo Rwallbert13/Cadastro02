@@ -15,11 +15,7 @@ public class Visao extends javax.swing.JFrame {
     public Visao() {
         initComponents();
         
-    edtNome.setEnabled(false);
-    edtSexo.setEnabled(false);
-    edtIdade.setEnabled(false);
-    edtMatricula.setEnabled(false);
-    edtAnoDeIngresso.setEnabled(false);
+    this.resetarCampos(false);
             
     }
 
@@ -33,37 +29,39 @@ public class Visao extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbCadastroDeAlunos = new javax.swing.JLabel();
+        lbNome = new javax.swing.JLabel();
+        lbSexo = new javax.swing.JLabel();
+        lbIdade = new javax.swing.JLabel();
+        lbMatricula = new javax.swing.JLabel();
+        lbAnoDeIngresso = new javax.swing.JLabel();
         edtNome = new javax.swing.JTextField();
         edtSexo = new javax.swing.JTextField();
         edtIdade = new javax.swing.JTextField();
         edtMatricula = new javax.swing.JTextField();
         edtAnoDeIngresso = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btNovo = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        btSalvar = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Cadstro de Alunos");
+        lbCadastroDeAlunos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbCadastroDeAlunos.setText("Cadstro de Alunos");
 
-        jLabel2.setText("Nome:");
+        lbNome.setText("Nome:");
 
-        jLabel3.setText("Sexo:");
+        lbSexo.setText("Sexo:");
 
-        jLabel4.setText("Idade:");
+        lbIdade.setText("Idade:");
 
-        jLabel5.setText("Matrícula");
+        lbMatricula.setText("Matrícula");
 
-        jLabel6.setText("Ano de ingresso:");
+        lbAnoDeIngresso.setText("Ano de ingresso:");
 
         edtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,20 +69,25 @@ public class Visao extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Novo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btNovo.setText("Novo");
+        btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btNovoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancelar");
+        btCancelar.setText("Cancelar");
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Editar");
+        btEditar.setText("Editar");
 
-        jButton4.setText("Salvar");
+        btSalvar.setText("Salvar");
 
-        jButton5.setText("Excluir");
+        btExcluir.setText("Excluir");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,8 +98,8 @@ public class Visao extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                            .addComponent(lbIdade)
+                            .addComponent(lbSexo))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,66 +107,70 @@ public class Visao extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(lbMatricula)
                                 .addGap(18, 18, 18)
                                 .addComponent(edtMatricula))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(lbAnoDeIngresso)
                                 .addGap(18, 18, 18)
                                 .addComponent(edtAnoDeIngresso))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(lbNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(edtNome))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(btNovo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
+                                .addComponent(btCancelar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)
+                                .addComponent(btEditar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4)
+                                .addComponent(btSalvar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5)))
+                                .addComponent(btExcluir)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(42, 42, 42))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(146, 146, 146)
-                .addComponent(jLabel1)
+                .addComponent(lbCadastroDeAlunos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addComponent(lbCadastroDeAlunos)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(btNovo)
+                    .addComponent(btCancelar)
+                    .addComponent(btEditar)
+                    .addComponent(btSalvar)
+                    .addComponent(btExcluir))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lbNome)
                     .addComponent(edtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
+                    .addComponent(lbSexo)
+                    .addComponent(lbMatricula)
                     .addComponent(edtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(lbIdade)
                     .addComponent(edtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                    .addComponent(lbAnoDeIngresso)
                     .addComponent(edtAnoDeIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,13 +180,19 @@ public class Visao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -189,14 +202,31 @@ public class Visao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtNomeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    edtNome.setEnabled(true);
-    edtSexo.setEnabled(true);
-    edtIdade.setEnabled(true);
-    edtMatricula.setEnabled(true);
-    edtAnoDeIngresso.setEnabled(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
+        this.resetarCampos(true);
+    }//GEN-LAST:event_btNovoActionPerformed
 
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+      this.resetarCampos(false);
+    }//GEN-LAST:event_btCancelarActionPerformed
+
+    
+    
+    public void resetarCampos(boolean flag) {
+    edtNome.setEnabled(flag);
+    edtSexo.setEnabled(flag);
+    edtIdade.setEnabled(flag);
+    edtMatricula.setEnabled(flag);
+    edtAnoDeIngresso.setEnabled(flag);
+
+    if (!flag){    
+      edtNome.setText("");
+      edtSexo.setText("");
+      edtIdade.setText("");
+      edtMatricula.setText("");
+      edtAnoDeIngresso.setText("");
+    }
+}
     /**
      * @param args the command line arguments
      */
@@ -233,22 +263,24 @@ public class Visao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btNovo;
+    private javax.swing.JButton btSalvar;
     private javax.swing.JTextField edtAnoDeIngresso;
     private javax.swing.JTextField edtIdade;
     private javax.swing.JTextField edtMatricula;
     private javax.swing.JTextField edtNome;
     private javax.swing.JTextField edtSexo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lbAnoDeIngresso;
+    private javax.swing.JLabel lbCadastroDeAlunos;
+    private javax.swing.JLabel lbIdade;
+    private javax.swing.JLabel lbMatricula;
+    private javax.swing.JLabel lbNome;
+    private javax.swing.JLabel lbSexo;
     // End of variables declaration//GEN-END:variables
 }
