@@ -1,8 +1,11 @@
+
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author aluno
@@ -12,9 +15,12 @@ public class Visao extends javax.swing.JFrame {
     /**
      * Creates new form Visao
      */
+    private ArrayList<Aluno> lista;
+
     public Visao() {
         initComponents();
 
+        lista = new ArrayList<>();
         this.resetarCampos(false);
 
     }
@@ -46,7 +52,7 @@ public class Visao extends javax.swing.JFrame {
         btSalvar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtResultado = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,9 +208,9 @@ public class Visao extends javax.swing.JFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtResultado.setColumns(20);
+        txtResultado.setRows(5);
+        jScrollPane1.setViewportView(txtResultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,8 +229,8 @@ public class Visao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -246,28 +252,40 @@ public class Visao extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         Aluno a = new Aluno();
+        int aux;
         a.setNome(edtNome.getText());
-        a.setSexo(edtSexo.getText().charAt(O));
+        a.setSexo(edtSexo.getText().charAt(0));
         String idadeLida = edtIdade.getText();
         if (!idadeLida.isEmpty()) {
-            aux = Integer.parselnt(edtIdade.getText());
+            aux = Integer.parseInt(edtIdade.getText());
             a.setIdade(aux);
             a.setMatricula(edtMatricula.getText());
         } else {
-            JOptionPane.showessageDialog(this, "Campo Idade obrigatório. ");
+            JOptionPane.showMessageDialog(this, "Campo Idade obrigatório. ");
         }
 
-        int aux = Integer.parseInt(edtIdade.getText());
+        aux = Integer.parseInt(edtIdade.getText());
         a.setIdade(aux);
         a.setMatricula(edtMatricula.getText());
         // SimpleDateFormat formato = new SimpleDateFormat("yyyy");
         //Date ano = formato.parse(edtAnoDeIngresso.getText());
         a.setAnoDeIngresso(aux);
 
-        txtResultado.setText(a.toString()); //mostra o resultado
+        //Mostrando a lista de alunos
+        this.lista.add(a);
+        txtResultado.setText(this.mostrarLista());
+        //txtResultado.setText(a.toString()); //mostrava o resultado
         this.resetarCampos(false);
     }//GEN-LAST:event_btSalvarActionPerformed
+    public String mostrarLista() {
+        String listaCompleta = "";
 
+        for (int i = 0; i <= lista.size() - 1; i++) {
+            Aluno aux = lista.get(i);
+            listaCompleta = listaCompleta + aux.toString();
+        }
+        return listaCompleta;
+    }
     private void edtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtNomeKeyReleased
         if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
             edtSexo.requestFocus();
@@ -275,27 +293,27 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_edtNomeKeyReleased
 
     private void edtSexoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSexoKeyReleased
-          if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
             edtIdade.requestFocus();
-  }
+        }
     }//GEN-LAST:event_edtSexoKeyReleased
 
     private void edtIdadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtIdadeKeyReleased
-          if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
             edtMatricula.requestFocus();
-  }
+        }
     }//GEN-LAST:event_edtIdadeKeyReleased
 
     private void edtMatriculaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtMatriculaKeyReleased
-          if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
             edtAnoDeIngresso.requestFocus();
-  }
+        }
     }//GEN-LAST:event_edtMatriculaKeyReleased
 
     private void edtAnoDeIngressoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtAnoDeIngressoKeyReleased
-          if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+        if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
             btSalvar.requestFocus();
-  }
+        }
     }//GEN-LAST:event_edtAnoDeIngressoKeyReleased
 
     public void resetarCampos(boolean flag) {
@@ -362,12 +380,12 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JTextField edtSexo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbAnoDeIngresso;
     private javax.swing.JLabel lbCadastroDeAlunos;
     private javax.swing.JLabel lbIdade;
     private javax.swing.JLabel lbMatricula;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbSexo;
+    private javax.swing.JTextArea txtResultado;
     // End of variables declaration//GEN-END:variables
 }
