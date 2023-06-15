@@ -14,9 +14,9 @@ public class Visao extends javax.swing.JFrame {
      */
     public Visao() {
         initComponents();
-        
-    this.resetarCampos(false);
-            
+
+        this.resetarCampos(false);
+
     }
 
     /**
@@ -66,6 +66,35 @@ public class Visao extends javax.swing.JFrame {
         edtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtNomeActionPerformed(evt);
+            }
+        });
+        edtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtNomeKeyReleased(evt);
+            }
+        });
+
+        edtSexo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtSexoKeyReleased(evt);
+            }
+        });
+
+        edtIdade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtIdadeKeyReleased(evt);
+            }
+        });
+
+        edtMatricula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtMatriculaKeyReleased(evt);
+            }
+        });
+
+        edtAnoDeIngresso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtAnoDeIngressoKeyReleased(evt);
             }
         });
 
@@ -155,8 +184,8 @@ public class Visao extends javax.swing.JFrame {
                     .addComponent(btSalvar)
                     .addComponent(btExcluir))
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbNome)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbNome, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(edtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -183,12 +212,10 @@ public class Visao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,6 +228,7 @@ public class Visao extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void edtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtNomeActionPerformed
@@ -209,45 +237,83 @@ public class Visao extends javax.swing.JFrame {
 
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
         this.resetarCampos(true);
+        edtNome.requestFocus();
     }//GEN-LAST:event_btNovoActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-      this.resetarCampos(false);
+        this.resetarCampos(false);
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         Aluno a = new Aluno();
         a.setNome(edtNome.getText());
         a.setSexo(edtSexo.getText().charAt(O));
+        String idadeLida = edtIdade.getText();
+        if (!idadeLida.isEmpty()) {
+            aux = Integer.parselnt(edtIdade.getText());
+            a.setIdade(aux);
+            a.setMatricula(edtMatricula.getText());
+        } else {
+            JOptionPane.showessageDialog(this, "Campo Idade obrigatório. ");
+        }
+
         int aux = Integer.parseInt(edtIdade.getText());
         a.setIdade(aux);
         a.setMatricula(edtMatricula.getText());
         // SimpleDateFormat formato = new SimpleDateFormat("yyyy");
         //Date ano = formato.parse(edtAnoDeIngresso.getText());
         a.setAnoDeIngresso(aux);
-        
-        
+
         txtResultado.setText(a.toString()); //mostra o resultado
         this.resetarCampos(false);
     }//GEN-LAST:event_btSalvarActionPerformed
 
-    
-    
-    public void resetarCampos(boolean flag) {
-    edtNome.setEnabled(flag);
-    edtSexo.setEnabled(flag);
-    edtIdade.setEnabled(flag);
-    edtMatricula.setEnabled(flag);
-    edtAnoDeIngresso.setEnabled(flag);
+    private void edtNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtNomeKeyReleased
+        if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
+            edtSexo.requestFocus();
+        }
+    }//GEN-LAST:event_edtNomeKeyReleased
 
-    if (!flag){    
-      edtNome.setText("");
-      edtSexo.setText("");
-      edtIdade.setText("");
-      edtMatricula.setText("");
-      edtAnoDeIngresso.setText("");
+    private void edtSexoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSexoKeyReleased
+          if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+            edtIdade.requestFocus();
+  }
+    }//GEN-LAST:event_edtSexoKeyReleased
+
+    private void edtIdadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtIdadeKeyReleased
+          if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+            edtMatricula.requestFocus();
+  }
+    }//GEN-LAST:event_edtIdadeKeyReleased
+
+    private void edtMatriculaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtMatriculaKeyReleased
+          if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+            edtAnoDeIngresso.requestFocus();
+  }
+    }//GEN-LAST:event_edtMatriculaKeyReleased
+
+    private void edtAnoDeIngressoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtAnoDeIngressoKeyReleased
+          if(evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER){
+            btSalvar.requestFocus();
+  }
+    }//GEN-LAST:event_edtAnoDeIngressoKeyReleased
+
+    public void resetarCampos(boolean flag) {
+        edtNome.setEnabled(flag);
+        edtSexo.setEnabled(flag);
+        edtIdade.setEnabled(flag);
+        edtMatricula.setEnabled(flag);
+        edtAnoDeIngresso.setEnabled(flag);
+
+        if (!flag) {
+            edtNome.setText("");
+            edtSexo.setText("");
+            edtIdade.setText("");
+            edtMatricula.setText("");
+            edtAnoDeIngresso.setText("");
+        }
     }
-}
+
     /**
      * @param args the command line arguments
      */
