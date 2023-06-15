@@ -86,6 +86,11 @@ public class Visao extends javax.swing.JFrame {
         btEditar.setText("Editar");
 
         btSalvar.setText("Salvar");
+        btSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarActionPerformed(evt);
+            }
+        });
 
         btExcluir.setText("Excluir");
 
@@ -209,6 +214,22 @@ public class Visao extends javax.swing.JFrame {
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
       this.resetarCampos(false);
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        Aluno a = new Aluno();
+        a.setNome(edtNome.getText());
+        a.setSexo(edtSexo.getText().charAt(O));
+        int aux = Integer.parseInt(edtIdade.getText());
+        a.setIdade(aux);
+        a.setMatricula(edtMatricula.getText());
+        // SimpleDateFormat formato = new SimpleDateFormat("yyyy");
+        //Date ano = formato.parse(edtAnoDeIngresso.getText());
+        a.setAnoDeIngresso(aux);
+        
+        
+        txtResultado.setText(a.toString()); //mostra o resultado
+        this.resetarCampos(false);
+    }//GEN-LAST:event_btSalvarActionPerformed
 
     
     

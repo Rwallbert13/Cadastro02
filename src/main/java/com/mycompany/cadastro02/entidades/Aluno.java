@@ -1,12 +1,11 @@
 
-import java.util.Date;
 
 class Aluno {
     private String nome;
     private char sexo;
     private int idade;
     private String matricula;
-    private Date anoDeIngresso;
+    private int anoDeIngresso;
     
     public Aluno() {
         
@@ -53,7 +52,7 @@ class Aluno {
         this.matricula = matricula;
     }
 
-    public Date getAnoDeIngresso() {
+    public int getAnoDeIngresso() {
         return anoDeIngresso;
     }
 
