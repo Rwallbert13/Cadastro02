@@ -16,10 +16,27 @@ public class Visao extends javax.swing.JFrame {
      * Creates new form Visao
      */
     private ArrayList<Aluno> lista;
+    private int indiceDeEdicao;
+
+    private void preencheAluno() {
+        Aluno a = new Aluno();
+        a.setNome(edtNome.getText());
+        a.setSexo(edtSexo.getText().charAt(0));
+        int aux = Integer.parseInt(edtIdade.getText());
+        a.setIdade(aux);
+        a.setMatricula(edtMatricula.getText());
+        int Ano = Integer.parseInt(edtAno.getText());
+        a.setAnoDeIngresso(:ano
+        return a;
+    
+
+    );
+    }
 
     public Visao() {
         initComponents();
 
+        indiceDeEdicao = -1;
         lista = new ArrayList<>();
         this.resetarCampos(false);
 
@@ -119,6 +136,11 @@ public class Visao extends javax.swing.JFrame {
         });
 
         btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +159,7 @@ public class Visao extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbIdade)
                             .addComponent(lbSexo))
                         .addGap(18, 18, 18)
@@ -218,19 +240,21 @@ public class Visao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -244,6 +268,7 @@ public class Visao extends javax.swing.JFrame {
     private void btNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovoActionPerformed
         this.resetarCampos(true);
         edtNome.requestFocus();
+
     }//GEN-LAST:event_btNovoActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
@@ -251,31 +276,9 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        Aluno a = new Aluno();
-        int aux;
-        a.setNome(edtNome.getText());
-        a.setSexo(edtSexo.getText().charAt(0));
-        String idadeLida = edtIdade.getText();
-        if (!idadeLida.isEmpty()) {
-            aux = Integer.parseInt(edtIdade.getText());
-            a.setIdade(aux);
-            a.setMatricula(edtMatricula.getText());
-        } else {
-            JOptionPane.showMessageDialog(this, "Campo Idade obrigatório. ");
-        }
-
-        aux = Integer.parseInt(edtIdade.getText());
-        a.setIdade(aux);
-        a.setMatricula(edtMatricula.getText());
-        // SimpleDateFormat formato = new SimpleDateFormat("yyyy");
-        //Date ano = formato.parse(edtAnoDeIngresso.getText());
-        a.setAnoDeIngresso(aux);
-
-        //Mostrando a lista de alunos
-        this.lista.add(a);
-        txtResultado.setText(this.mostrarLista());
-        //txtResultado.setText(a.toString()); //mostrava o resultado
-        this.resetarCampos(false);
+        Aluno a;      
+        a = preencheAluno();
+        txtResultado.setText(a.toString()); //mostra o resultado
     }//GEN-LAST:event_btSalvarActionPerformed
     public String mostrarLista() {
         String listaCompleta = "";
@@ -315,6 +318,28 @@ public class Visao extends javax.swing.JFrame {
             btSalvar.requestFocus();
         }
     }//GEN-LAST:event_edtAnoDeIngressoKeyReleased
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        String matriculaInformada = JOptionPane.showInputDialog("Informe o aluno a ser editado: ", "Informe a matrícula:");
+        indiceDeEdicao = this.pesquisaAluno(matriculaInformada);
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private int pesquisaAluno(String MatriculaInformada) {
+        for (int i = 0; i <= this.lista.size(-1));
+        i++
+        
+        
+            ) {
+                if (this.lista.get(i).getMatricula()   {
+                equals(matriculaInformada)
+            }
+            
+                ){
+                    return i;
+            }
+        }
+        return -1;
+    }
 
     public void resetarCampos(boolean flag) {
         edtNome.setEnabled(flag);
