@@ -1,7 +1,9 @@
+package com.mycompany.cadastro02.visao;
 
+
+import com.mycompany.cadastro02.entidades.Aluno;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,15 +12,15 @@ import javax.swing.JOptionPane;
  *
  * @author aluno
  */
-public class Visao extends javax.swing.JFrame {
+public class frAluno extends javax.swing.JFrame {
 
     /**
-     * Creates new form Visao
+     * Creates new form frAluno
      */
     private ArrayList<Aluno> lista;
     private int indiceDeEdicao;
 
-    private void preencheAluno() {
+    private Aluno preencheAluno() {
         Aluno a = new Aluno();
         a.setNome(edtNome.getText());
         a.setSexo(edtSexo.getText().charAt(0));
@@ -26,14 +28,11 @@ public class Visao extends javax.swing.JFrame {
         a.setIdade(aux);
         a.setMatricula(edtMatricula.getText());
         int Ano = Integer.parseInt(edtAno.getText());
-        a.setAnoDeIngresso(:ano
+        a.setAnoDeIngresso(Ano);
         return a;
-    
-
-    );
     }
 
-    public Visao() {
+    public frAluno() {
         initComponents();
 
         indiceDeEdicao = -1;
@@ -62,7 +61,7 @@ public class Visao extends javax.swing.JFrame {
         edtSexo = new javax.swing.JTextField();
         edtIdade = new javax.swing.JTextField();
         edtMatricula = new javax.swing.JTextField();
-        edtAnoDeIngresso = new javax.swing.JTextField();
+        edtAno = new javax.swing.JTextField();
         btNovo = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
@@ -73,19 +72,28 @@ public class Visao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbCadastroDeAlunos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        lbCadastroDeAlunos.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 24)); // NOI18N
         lbCadastroDeAlunos.setText("Cadstro de Alunos");
 
+        lbNome.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         lbNome.setText("Nome:");
 
+        lbSexo.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         lbSexo.setText("Sexo:");
 
+        lbIdade.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         lbIdade.setText("Idade:");
 
+        lbMatricula.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         lbMatricula.setText("Matrícula");
 
+        lbAnoDeIngresso.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         lbAnoDeIngresso.setText("Ano de ingresso:");
 
+        edtNome.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
         edtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtNomeActionPerformed(evt);
@@ -97,30 +105,36 @@ public class Visao extends javax.swing.JFrame {
             }
         });
 
+        edtSexo.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
         edtSexo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 edtSexoKeyReleased(evt);
             }
         });
 
+        edtIdade.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
         edtIdade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 edtIdadeKeyReleased(evt);
             }
         });
 
+        edtMatricula.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
         edtMatricula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 edtMatriculaKeyReleased(evt);
             }
         });
 
-        edtAnoDeIngresso.addKeyListener(new java.awt.event.KeyAdapter() {
+        edtAno.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
+        edtAno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                edtAnoDeIngressoKeyReleased(evt);
+                edtAnoKeyReleased(evt);
             }
         });
 
+        btNovo.setBackground(java.awt.SystemColor.textHighlight);
+        btNovo.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btNovo.setText("Novo");
         btNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +142,8 @@ public class Visao extends javax.swing.JFrame {
             }
         });
 
+        btCancelar.setBackground(java.awt.SystemColor.textHighlight);
+        btCancelar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +151,8 @@ public class Visao extends javax.swing.JFrame {
             }
         });
 
+        btEditar.setBackground(java.awt.SystemColor.textHighlight);
+        btEditar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +160,8 @@ public class Visao extends javax.swing.JFrame {
             }
         });
 
+        btSalvar.setBackground(java.awt.SystemColor.textHighlight);
+        btSalvar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +169,8 @@ public class Visao extends javax.swing.JFrame {
             }
         });
 
+        btExcluir.setBackground(java.awt.SystemColor.textHighlight);
+        btExcluir.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btExcluir.setText("Excluir");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -175,29 +197,25 @@ public class Visao extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lbAnoDeIngresso)
                                 .addGap(18, 18, 18)
-                                .addComponent(edtAnoDeIngresso))))
+                                .addComponent(edtAno))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbNome)
+                        .addGap(18, 18, 18)
+                        .addComponent(edtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbCadastroDeAlunos)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(edtNome))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btNovo)
+                                .addComponent(btNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btCancelar)
+                                .addComponent(btCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEditar)
+                                .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btSalvar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btExcluir)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(42, 42, 42))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(lbCadastroDeAlunos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,9 +230,9 @@ public class Visao extends javax.swing.JFrame {
                     .addComponent(btSalvar)
                     .addComponent(btExcluir))
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbNome, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(edtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbNome))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(edtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,10 +244,11 @@ public class Visao extends javax.swing.JFrame {
                     .addComponent(lbIdade)
                     .addComponent(edtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbAnoDeIngresso)
-                    .addComponent(edtAnoDeIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
+        txtResultado.setBackground(new java.awt.Color(204, 204, 204));
         txtResultado.setColumns(20);
         txtResultado.setRows(5);
         jScrollPane1.setViewportView(txtResultado);
@@ -241,10 +260,8 @@ public class Visao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -253,7 +270,7 @@ public class Visao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -309,15 +326,15 @@ public class Visao extends javax.swing.JFrame {
 
     private void edtMatriculaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtMatriculaKeyReleased
         if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
-            edtAnoDeIngresso.requestFocus();
+            edtAno.requestFocus();
         }
     }//GEN-LAST:event_edtMatriculaKeyReleased
 
-    private void edtAnoDeIngressoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtAnoDeIngressoKeyReleased
+    private void edtAnoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtAnoKeyReleased
         if (evt.getKeyChar() == java.awt.event.KeyEvent.VK_ENTER) {
             btSalvar.requestFocus();
         }
-    }//GEN-LAST:event_edtAnoDeIngressoKeyReleased
+    }//GEN-LAST:event_edtAnoKeyReleased
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         String matriculaInformada = JOptionPane.showInputDialog("Informe o aluno a ser editado: ", "Informe a matrícula:");
@@ -346,14 +363,14 @@ public class Visao extends javax.swing.JFrame {
         edtSexo.setEnabled(flag);
         edtIdade.setEnabled(flag);
         edtMatricula.setEnabled(flag);
-        edtAnoDeIngresso.setEnabled(flag);
+        edtAno.setEnabled(flag);
 
         if (!flag) {
             edtNome.setText("");
             edtSexo.setText("");
             edtIdade.setText("");
             edtMatricula.setText("");
-            edtAnoDeIngresso.setText("");
+            edtAno.setText("");
         }
     }
 
@@ -374,20 +391,21 @@ public class Visao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Visao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Visao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Visao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Visao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Visao().setVisible(true);
+                new frAluno().setVisible(true);
             }
         });
     }
@@ -398,7 +416,7 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JTextField edtAnoDeIngresso;
+    private javax.swing.JTextField edtAno;
     private javax.swing.JTextField edtIdade;
     private javax.swing.JTextField edtMatricula;
     private javax.swing.JTextField edtNome;

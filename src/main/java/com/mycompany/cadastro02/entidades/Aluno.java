@@ -1,6 +1,8 @@
+package com.mycompany.cadastro02.entidades;
 
 
-class Aluno {
+
+public class Aluno {
     private String nome;
     private char sexo;
     private int idade;
@@ -12,7 +14,7 @@ class Aluno {
        
     }
 
-    public Aluno(String nome, char sexo, int idade, String matricula, Date anoDeIngresso) {
+    public Aluno(String nome, char sexo, int idade, String matricula, int anoDeIngresso) {
         this.nome = nome;
         this.sexo = sexo;
         this.idade = idade;
@@ -56,9 +58,19 @@ class Aluno {
         return anoDeIngresso;
     }
 
-    public void setAnoDeIngresso(Date anoDeIngresso) {
+    public void setAnoDeIngresso(int anoDeIngresso) {
         this.anoDeIngresso = anoDeIngresso;
     }
     
+    @Override
+    public String toString() {
+        return ("__________________________\n"
+                + "Nome: " + this.nome + "\n"
+                + "Sexo:" + this.sexo + "\n"
+                + "Idade: " + this.idade + "\n"
+                + "Matricula: " + this.matricula + "\n"
+                + "Ano de ingresso: " + this.anoDeIngresso + "\n"
+                + "__________________________\n");
+    }
     
 }
