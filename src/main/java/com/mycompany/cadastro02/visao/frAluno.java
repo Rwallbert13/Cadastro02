@@ -50,6 +50,7 @@ public class frAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jColorChooser1 = new javax.swing.JColorChooser();
         jPanel1 = new javax.swing.JPanel();
         lbCadastroDeAlunos = new javax.swing.JLabel();
         lbNome = new javax.swing.JLabel();
@@ -71,12 +72,13 @@ public class frAluno extends javax.swing.JFrame {
         txtResultado = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(51, 102, 255));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         lbCadastroDeAlunos.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 24)); // NOI18N
-        lbCadastroDeAlunos.setText("Cadstro de Alunos");
+        lbCadastroDeAlunos.setText("CADASTRO DE ALUNOS");
 
         lbNome.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         lbNome.setText("Nome:");
@@ -93,7 +95,9 @@ public class frAluno extends javax.swing.JFrame {
         lbAnoDeIngresso.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         lbAnoDeIngresso.setText("Ano de ingresso:");
 
+        edtNome.setBackground(new java.awt.Color(153, 204, 255));
         edtNome.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
+        edtNome.setDisabledTextColor(new java.awt.Color(204, 255, 255));
         edtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtNomeActionPerformed(evt);
@@ -105,6 +109,7 @@ public class frAluno extends javax.swing.JFrame {
             }
         });
 
+        edtSexo.setBackground(new java.awt.Color(153, 204, 255));
         edtSexo.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
         edtSexo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -112,6 +117,7 @@ public class frAluno extends javax.swing.JFrame {
             }
         });
 
+        edtIdade.setBackground(new java.awt.Color(153, 204, 255));
         edtIdade.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
         edtIdade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -119,6 +125,7 @@ public class frAluno extends javax.swing.JFrame {
             }
         });
 
+        edtMatricula.setBackground(new java.awt.Color(153, 204, 255));
         edtMatricula.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
         edtMatricula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -126,6 +133,7 @@ public class frAluno extends javax.swing.JFrame {
             }
         });
 
+        edtAno.setBackground(new java.awt.Color(153, 204, 255));
         edtAno.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 10)); // NOI18N
         edtAno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -133,7 +141,7 @@ public class frAluno extends javax.swing.JFrame {
             }
         });
 
-        btNovo.setBackground(java.awt.SystemColor.textHighlight);
+        btNovo.setBackground(new java.awt.Color(153, 204, 255));
         btNovo.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btNovo.setText("Novo");
         btNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +150,7 @@ public class frAluno extends javax.swing.JFrame {
             }
         });
 
-        btCancelar.setBackground(java.awt.SystemColor.textHighlight);
+        btCancelar.setBackground(new java.awt.Color(153, 204, 255));
         btCancelar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +159,7 @@ public class frAluno extends javax.swing.JFrame {
             }
         });
 
-        btEditar.setBackground(java.awt.SystemColor.textHighlight);
+        btEditar.setBackground(new java.awt.Color(153, 204, 255));
         btEditar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +168,7 @@ public class frAluno extends javax.swing.JFrame {
             }
         });
 
-        btSalvar.setBackground(java.awt.SystemColor.textHighlight);
+        btSalvar.setBackground(new java.awt.Color(153, 204, 255));
         btSalvar.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -169,21 +177,31 @@ public class frAluno extends javax.swing.JFrame {
             }
         });
 
-        btExcluir.setBackground(java.awt.SystemColor.textHighlight);
+        btExcluir.setBackground(new java.awt.Color(153, 204, 255));
         btExcluir.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 12)); // NOI18N
         btExcluir.setText("Excluir");
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(lbNome)
+                        .addGap(24, 24, 24)
+                        .addComponent(edtNome))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbIdade)
-                            .addComponent(lbSexo))
+                            .addComponent(lbIdade, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbSexo, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,23 +217,20 @@ public class frAluno extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(edtAno))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbNome)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(edtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbCadastroDeAlunos)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(42, 42, 42))
+                                .addComponent(btCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,12 +260,12 @@ public class frAluno extends javax.swing.JFrame {
                     .addComponent(edtIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbAnoDeIngresso)
                     .addComponent(edtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        txtResultado.setBackground(new java.awt.Color(204, 204, 204));
         txtResultado.setColumns(20);
         txtResultado.setRows(5);
+        txtResultado.setBorder(null);
         jScrollPane1.setViewportView(txtResultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -260,8 +275,8 @@ public class frAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -269,8 +284,8 @@ public class frAluno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -340,6 +355,10 @@ public class frAluno extends javax.swing.JFrame {
         String matriculaInformada = JOptionPane.showInputDialog("Informe o aluno a ser editado: ", "Informe a matrícula:");
         indiceDeEdicao = this.pesquisaAluno(matriculaInformada);
     }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     private int pesquisaAluno(String MatriculaInformada) {
         for (int i = 0; i <= this.lista.size(-1));
@@ -421,6 +440,7 @@ public class frAluno extends javax.swing.JFrame {
     private javax.swing.JTextField edtMatricula;
     private javax.swing.JTextField edtNome;
     private javax.swing.JTextField edtSexo;
+    private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAnoDeIngresso;
